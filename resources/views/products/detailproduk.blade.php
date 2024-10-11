@@ -1,50 +1,51 @@
-<x-layout>
-    <x-slot:title>Detail Produk - </x-slot:title>
-    @if ($product->product_image)
-        <img src="{{ $product->product_image_url }}" class=""/>
+@extends('layouts.template')
+
+@section('title', "Product: $product->product_name")
+
+@section('body')
+
+@if ($product->avatar)
+    <img src="{{ $product->avatar }}" class="rounded img-thumbnail mx-auto d-block my-3"/>
+@endif
+
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <th scope="row">ID</th>
+            <td>{{$product->id}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Product Name</th>
+            <td>{{$product->product_name}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Description</th>
+            <td>{{$product->description}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Retail Price</th>
+            <td>{{$product->retail_price}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Wholesale Price</th>
+            <td>{{$product->wholesale_price}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Origin</th>
+            <td>{{$product->origin}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Quantity</th>
+            <td>{{$product->quantity}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div>
+    <small>Created at: {{$product->created_at}}</small>
+    @if ($product->updated_at)
+        <br><small>Updated at: {{$product->updated_at}}</small>
     @endif
-    <div class="container mx-auto">
-        <table class="table-auto mx-auto">
-            <tbody>
-                <tr>
-                    <th scope="row" class="border-2 border-gray-300 p-1">ID</th>
-                    <td class="border-2 border-gray-300 p-1">{{ $product->id }}</td>
-                </tr>
-                <tr>
-                    <th scope="row" class="border-2 border-gray-300 p-1">Product Name</th>
-                    <td class="border-2 border-gray-300 p-1">{{ $product->product_name }}</td>
-                </tr>
-                <tr>
-                    <th scope="row" class="border-2 border-gray-300 p-1">Description</th>
-                    <td class="border-2 border-gray-300 p-1">{{ $product->description }}</td>
-                </tr>
-                <tr>
-                    <th scope="row" class="border-2 border-gray-300 p-1">Retail Price</th>
-                    <td class="border-2 border-gray-300 p-1">{{ $product->retail_price }}</td>
-                </tr>
-                <tr>
-                    <th scope="row" class="border-2 border-gray-300 p-1">Wholesale Price</th>
-                    <td class="border-2 border-gray-300 p-1">{{ $product->wholesale_price }}</td>
-                </tr>
-                <tr>
-                    <th scope="row" class="border-2 border-gray-300 p-1">Origin</th>
-                    <td class="border-2 border-gray-300 p-1">{{ $product->origin }}</td>
-                </tr>
-                <tr>
-                    <th scope="row" class="border-2 border-gray-300 p-1">Quantity</th>
-                    <td class="border-2 border-gray-300 p-1">{{ $product->quantity }}</td>
-                </tr>
-                <tr>
-                    <th scope="row" class="border-2 border-gray-300 p-1">Created at</th>
-                    <td class="border-2 border-gray-300 p-1">{{ $product->created_at }}</td>
-                </tr>
-                @if ($product->updated_at)
-                <tr>
-                    <th scope="row" class="border-2 border-gray-300 p-1">Updated at</th>
-                    <td class="border-2 border-gray-300 p-1">{{ $product->updated_at }}</td>
-                </tr>
-                @endif
-            </tbody>
-        </table>
-    </div>
-</x-layout>
+</div>
+
+@endsection

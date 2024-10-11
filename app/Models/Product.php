@@ -18,6 +18,6 @@ class Product extends Model
         'wholesale_price',
         'origin',
         'quantity',
-        'product_image',
+        'photo',
     ];
 }
